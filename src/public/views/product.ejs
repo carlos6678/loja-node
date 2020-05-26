@@ -1,0 +1,69 @@
+<%- include('header') %>
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-secondary"><%=Product[0].name%></h1>
+                <div class="conteudo bg-light">
+                    <div class="produto">
+                        <img id="produto_origin" class="w-100" src="<%=process.env.PATH_IMAGE+Product[0].image_url[0].url%>"/>
+                    </div>
+                    <div class="info">
+                        <div class="preços">
+                            <h1 class="text-secondary">R$ <%=Product[0].price%></h1>
+                        </div>
+                        <div class="images">
+                            <%Product[0].image_url.forEach(image=>{%>
+                                <img class="mini-img" src="<%=process.env.PATH_IMAGE+image.url%>"/>
+                            <%})%>
+                        </div>
+                        <div class="descricao mt-3">
+                            <h4 class="text-secondary"><strong>descricao:</strong><%=Product[0].descricao%></h4>
+                            <h4 class="text-secondary"><strong>Estoque:</strong><%=Product[0].quantity%></h4>
+                        </div>
+                        <div class="quantidade mt-3">
+                            <input class="form-control" placeholder="Quantidade" type="number" id="quantity" min="1" max="<%=Product[0].quantity%>">
+                        </div>
+                        <div class="info-pessoais d-flex mt-3">
+                            <input type="text" class="form-control" placeholder="CEP"   >
+                            <button class="btn btn-dark">Calcular</button>
+                        </div>
+                        <div class="actions d-flex">
+                            <button class="btn btn-lg btn-success w-75" style="font-size: 28px;">Comprar</button>
+                            <button class="btn-lg w-25 bg-dark"><ion-icon style="font-size: 50px;" name="cart-outline"></ion-icon></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 mt-5">
+                <div class="comments">
+                    <h1 class="text-light">Comentarios</h1>
+                    <div class="list-group">
+                        <%Product[0].comments.forEach(comment=>{%>
+                            <div class="list-group-item mb-1">
+                                <div class="body-comment">
+                                    <ion-icon name="person-circle-outline" style="font-size: 50px;"></ion-icon>
+                                    <h4><%=comment.username%></h4>
+                                    <p style="word-wrap: break-word;"><%=comment.body%></p>
+                                </div>
+                            </div>
+                        <%})%>
+                    </div>
+                </div>
+            </div>
+            <table class="table mt-5 mb-5 table-hover">
+                <thead class="thead-dark">
+                    <th>Caracteristicas</th>
+                    <th>Info</th>
+                </thead>
+                <tbody class="bg-success">
+                    <%Features.forEach(fet=>{%>
+                        <tr>
+                            <td><%=fet.name%></td>
+                            <td><%=fet.value%></td>
+                        </tr>
+                    <%})%>
+                </tbody>
+            </table>
+        </div>
+    </div>
+<%- include('footer') %>

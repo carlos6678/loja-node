@@ -1,0 +1,101 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #E9EcEf;
+}
+#menu-bar ul li a{
+    color: white;
+}
+.list-group .list-group-item strong{
+    color: white;
+    word-wrap: break-word;
+}
+.list-group .list-group-item-light:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.fundo-bar li a{
+    color:white;
+    font-weight: bold;
+}
+.fundo-bar li{
+    border-left: 2px solid white;
+}
+.fundo-bar li:hover{
+    transform: scale(0.9);
+}
+.card-body h5,
+.card-body p,
+.card-body strong{
+    color: white;
+}
+.card:hover{
+    transform: scale(1.1);
+}
+.menu-lateral-show{
+    display: none;
+}
+.menu-lateral-show-body{
+    height:600px;
+    position: absolute;
+    z-index: 10000;
+    transition: all 0.5s linear;
+    left: -1000px;
+    background-color: #E9EcEf;
+    overflow-y: auto;
+}
+.action-menu{
+    background-color: #28a745;
+}
+.menu-categories{
+    display: none;
+}
+.conteudo{
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.produto{
+    height: 500px;
+    width: 500px;
+}
+.info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 500px;
+    width: 500px;
+}
+.preços h2{
+    color:black;
+}
+.images img{
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    cursor: pointer;
+}
+td{
+    color: white;
+    font-weight: bold;
+    font-size: 19px;
+    font-family: 'Courier New', Courier, monospace;
+}
+.comments{
+    background-color: rgba(52, 58, 64, 0.5);
+    padding:5px;
+}
+@media (max-width:900px){
+    .menu-lateral{
+        display: none;
+    }
+    .wrapper-promotions{
+        display: flex;
+    }
+    .menu-lateral-show{
+        display: block;
+    }
+    .menu-categories{
+        display: block;
+    }
+}
