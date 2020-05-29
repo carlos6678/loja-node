@@ -1,5 +1,5 @@
 $(function(){
-    setInterval(() => {
+    setInterval(function(){
         if(window.innerWidth>963){
             $('#centro').addClass('col-sm-7')
             $('#centro').removeClass('col-sm-12')
@@ -15,7 +15,7 @@ $(function(){
         $('.menu-lateral-show-body').css('transform','translateX(-100px)')
     })
     $('.mini-img').click(function(e){
-        const url = e.target.getAttribute('src')
+        var url = e.target.getAttribute('src')
         $('#produto_origin').removeAttr('src')
         $('#produto_origin').attr('src',url)
     })
