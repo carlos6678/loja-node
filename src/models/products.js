@@ -6,7 +6,7 @@ module.exports = {
     },
     async Listar(page,limitPage){
         const products = await knex('products')
-        .select('id','name','descricao','price','old_price')
+        .select()
         .limit(limitPage)
         .offset((page-1)*limitPage)
         .where('available',0)
@@ -20,7 +20,7 @@ module.exports = {
     },
     async getPromotions(){
         const products = await knex('products')
-        .select('id','name','descricao','price','old_price')
+        .select()
         .where('promotion',1)
         .limit(5)
         .orderBy('id','desc')
@@ -32,7 +32,7 @@ module.exports = {
     },
     async getNewProducts(){
         const products = await knex('products')
-        .select('id','name','descricao','price','old_price')
+        .select()
         .where('is_new',1)
         .limit(5)
         .orderBy('id','desc')
@@ -69,7 +69,7 @@ module.exports = {
     },
     async getProduct(id){
         const product = await knex('products')
-        .select('id','name','descricao','price','old_price','quantity')
+        .select()
         .where('id',id)
         if(product){
             return this.the_products_images(await this.the_products_comments(product))

@@ -2,6 +2,9 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     background-color: #E9EcEf;
 }
+a{
+    text-decoration: none;
+}
 #menu-bar ul li a{
     color: white;
 }
@@ -85,7 +88,80 @@ td{
     background-color: rgba(52, 58, 64, 0.5);
     padding:5px;
 }
-@media (max-width:900px){
+#produtos{
+    display: flex;
+    justify-content: center;
+}
+.dropdown-toggle::after{
+    display: none;
+}
+.dropdown-menu{
+    background-color: #28a745;
+}
+.dropdown-item{
+    background-color: #28a745;
+    color: white;
+    margin-bottom: 2px;
+}
+.dropdown-item:hover{
+    transform: scale(1.1);
+    background-color:#28a745;
+    color: white;
+}
+#product_home{
+    width: 200px;
+    height: 430px;
+    text-decoration: none;
+}
+#product_home img{
+    height: 200px;
+}
+.is_new{
+    background-color: green;
+    position:absolute;
+    width: 90px;
+    height: 40px;
+    top:0;
+    left:0;
+    border-radius: 0 0 15px 0;
+    display: inline-block;
+    text-align: center;
+    color: white;
+    font-size: 19px;
+    font-weight: bold;
+    padding: 5px;
+}
+.promotion{
+    background-color: black;
+    position: absolute;;
+    width: 90px;
+    height: 40px;
+    top:0;
+    right:0;
+    border-radius: 0 0 15px 0;
+    display: inline-block;
+    text-align: center;
+    color: white;
+    font-size: 19px;
+    font-weight: bold;
+    padding: 5px;
+}
+.bestseller{
+    background-color: #28a745;
+    position: absolute;;
+    width: 120px;
+    height: 40px;
+    bottom:0;
+    left:0;
+    border-radius: 0 0 15px 0;
+    display: inline-block;
+    text-align: center;
+    color: white;
+    font-size: 19px;
+    font-weight: bold;
+    padding: 5px;
+}
+@media (max-width:963px){
     .menu-lateral{
         display: none;
     }
@@ -97,5 +173,17 @@ td{
     }
     .menu-categories{
         display: block;
+    }
+    #produtos{
+        display: block;
+    }
+}
+@media (max-width:445px){
+    #product_home{
+        width: 300px;
+        height: 500px;
+    }
+    #product_home img{
+        height: 270px;
     }
 }

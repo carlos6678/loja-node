@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/login.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="card w-100">
+                <div class="card-header bg-dark">
+                    <h1>Entrar</h1>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="/login/logar" class="form-group">
+                        <label>E-mail</label>
+                        <input type="text" class="form-control mb-2" name="email">
+                        <label>Senha</label>
+                        <input type="text" class="form-control mb-2" name="password">
+                        <input type="submit" class="btn btn-outline-success btn-lg" value="Login">
+                        <a href="/login/cadastrar" class="btn btn-lg btn-outline-info">Cadastrar</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <% if(typeof errors !== "undefined"){ %>
+            <% errors.forEach(erro=>{ %>
+                <div class="alert alert-danger"><%=erro.msg%></div>
+            <%})%>
+            
+        <%}%>
+    </div>
+</body>
+</html>

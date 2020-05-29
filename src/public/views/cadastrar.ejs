@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/login.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="card w-100">
+                <div class="card-header bg-dark">
+                    <h1>Cadastrar</h1>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="/login/salvar" class="form-group">
+                        <label>Nome</label>
+                        <input type="text" class="form-control mb-2" name="name">
+
+                        <label>Telefone</label>
+                        <input type="text" class="form-control mb-2" name="tel">
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="sexo" id="masc" value="M" checked>
+                            <label class="form-check-label" for="masc">Masculino</label>
+                        </div>
+
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="radio" name="sexo" id="femi" value="F">
+                            <label class="form-check-label" for="femi">Feminino</label>
+                        </div>
+
+                        <label>E-mail</label>
+                        <input type="text" class="form-control mb-2" name="email">
+
+                        <label>Senha</label>
+                        <input type="text" class="form-control mb-2" name="password">
+
+                        <input class="btn btn-lg btn-outline-success" type="submit" value="Cadastrar">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <% if(typeof errors !== "undefined"){ %>
+            <% errors.forEach(erro=>{ %>
+                <div class="alert alert-danger"><%=erro.msg%></div>
+            <%})%>
+            
+        <%}%>
+    </div>
+</body>
+</html>
