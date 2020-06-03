@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/css/login.css">
+    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
 </head>
 <body>
     <div class="container">
@@ -20,7 +21,11 @@
                         <label>Senha</label>
                         <input type="text" class="form-control mb-2" name="password">
                         <input type="submit" class="btn btn-outline-success btn-lg" value="Login">
-                        <a href="/login/cadastrar" class="btn btn-lg btn-outline-info">Cadastrar</a>
+                        <a href="/login/cadastrar" class="btn btn-lg btn-outline-success">Cadastrar</a>
+                        <a href="/login/auth/facebook" class="btn btn-lg btn-outline-primary d-flex justify-content-center mt-3">
+                            <ion-icon name="logo-facebook" style="font-size: 28px;"></ion-icon>
+                            <strong>Entrar Com Facebook</strong>
+                        </a>
                     </form>
                 </div>
             </div>

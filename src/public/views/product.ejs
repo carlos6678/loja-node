@@ -1,15 +1,18 @@
 <%- include('header') %>
     <div class="container mt-3">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-sm-12">
                 <h1 class="text-secondary"><%=Product[0].name%></h1>
                 <div class="conteudo bg-light">
                     <div class="produto">
                         <img id="produto_origin" class="w-100" src="<%=process.env.PATH_IMAGE+Product[0].image_url[0].url%>"/>
                     </div>
                     <div class="info">
-                        <div class="preços">
-                            <h1 class="text-secondary">R$ <%=Product[0].price%></h1>
+                        <div class="preços d-flex justify-content-between">
+                            <% if(Product[0].promotion===1){ %>
+                                <h4 class="text-secondary" style="text-decoration: line-through;">De:R$ <%=Product[0].old_price%></h4>
+                            <%}%>
+                            <h4 class="text-secondary">Por:R$ <%=Product[0].price%></h4>
                         </div>
                         <div class="images">
                             <%Product[0].image_url.forEach(image=>{%>
@@ -17,53 +20,73 @@
                             <%})%>
                         </div>
                         <div class="descricao mt-3">
-                            <h4 class="text-secondary"><strong>descricao:</strong><%=Product[0].descricao%></h4>
                             <h4 class="text-secondary"><strong>Estoque:</strong><%=Product[0].quantity%></h4>
                         </div>
+                        <div class="cards-accepts">
+                            <!-- <strong>Cartões aceitos:</strong> -->
+                            <img src="/assets/cards/visa.png" class="card-width">
+                            <img src="/assets/cards/mastercard.png" class="card-width">
+                            <img src="/assets/cards/AmericanExpress.png" class="card-width">
+                            <img src="/assets/cards/elo.png" class="card-width">
+                            <img src="/assets/cards/hipercard.png" class="card-width">
+                        </div>
                         <div class="quantidade mt-3">
-                            <input class="form-control" placeholder="Quantidade" type="number" id="quantity" min="1" max="<%=Product[0].quantity%>">
+                            <input class="form-control" placeholder="Quantidade" type="number" id="quantity" min="1" max="<%=Product[0].quantity%>" value="1">
                         </div>
                         <div class="info-pessoais d-flex mt-3">
                             <input type="text" class="form-control" placeholder="CEP"   >
                             <button class="btn btn-dark">Calcular</button>
                         </div>
-                        <div class="actions d-flex">
+                        <form action="/cart/add" class="actions d-flex" method="POST">
+                            <input type="hidden" value="<%=Product[0].id%>" name="productID">
+                            <input type="hidden" name="quantityProduct" id="quantityProduct" value="1">
                             <a href="/pagamento/pagar" class="btn btn-lg btn-success w-75 align-self-center" style="font-size: 40px;">Comprar</a>
-                            <button class="btn-lg w-25 bg-dark align-self-center"><ion-icon style="font-size: 50px;" name="cart-outline"></ion-icon></button>
-                        </div>
+                            <button class="btn-lg w-25 bg-dark align-self-center" type="submit"><ion-icon style="font-size: 50px;" name="cart-outline"></ion-icon></button>
+                        </form>
                     </div>
                 </div>
             </div>
-            <div class="col-md-12 mt-5">
-                <div class="comments">
-                    <h1 class="text-light">Comentarios</h1>
-                    <div class="list-group">
-                        <%Product[0].comments.forEach(comment=>{%>
-                            <div class="list-group-item mb-1">
-                                <div class="body-comment">
-                                    <ion-icon name="person-circle-outline" style="font-size: 50px;"></ion-icon>
-                                    <h4><%=comment.username%></h4>
-                                    <p style="word-wrap: break-word;"><%=comment.body%></p>
-                                </div>
-                            </div>
+            <div class="col-sm-12 mt-5">
+                <div class="descriptions">
+                    <h4 class="text-secondary text-description"><strong>descricao:</strong><%=Product[0].descricao%></h4>
+                </div>
+            </div>
+            <%if(Features.length>0){%>
+                <table class="table mt-5 mb-5 table-hover">
+                    <thead class="thead-dark">
+                        <th>Caracteristicas</th>
+                        <th>Info</th>
+                    </thead>
+                    <tbody class="bg-success">
+                        <%Features.forEach(fet=>{%>
+                            <tr>
+                                <td><%=fet.name%></td>
+                                <td><%=fet.value%></td>
+                            </tr>
                         <%})%>
-                    </div>
+                    </tbody>
+                </table>
+            <%}%>
+            <div class="col-sm-12 mt-5">
+                <div class="comments">
+                    <%if(Product[0].comments.length>0){%>
+                        <h1 class="text-light">Comentarios</h1>
+                        <div class="list-group">
+                            <%Product[0].comments.forEach(comment=>{%>
+                                <div class="list-group-item mb-1">
+                                    <div class="body-comment">
+                                        <ion-icon name="person-circle-outline" style="font-size: 50px;"></ion-icon>
+                                        <h4><%=comment.username%></h4>
+                                        <p style="word-wrap: break-word;"><%=comment.body%></p>
+                                    </div>
+                                </div>
+                            <%})%>
+                        </div>
+                    <%}else{%>
+                        <h1 class="text-light">Não há Comentarios</h1>
+                    <%}%>
                 </div>
             </div>
-            <table class="table mt-5 mb-5 table-hover">
-                <thead class="thead-dark">
-                    <th>Caracteristicas</th>
-                    <th>Info</th>
-                </thead>
-                <tbody class="bg-success">
-                    <%Features.forEach(fet=>{%>
-                        <tr>
-                            <td><%=fet.name%></td>
-                            <td><%=fet.value%></td>
-                        </tr>
-                    <%})%>
-                </tbody>
-            </table>
         </div>
     </div>
 <%- include('footer') %>

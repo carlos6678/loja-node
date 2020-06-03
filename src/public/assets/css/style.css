@@ -32,7 +32,7 @@ a{
     color: white;
 }
 .card:hover{
-    transform: scale(1.1);
+    transform: scale(1.02);
 }
 .menu-lateral-show{
     display: none;
@@ -116,6 +116,14 @@ td{
 #product_home img{
     height: 200px;
 }
+#product_category{
+    width: 300px;
+    height: 530px;
+    text-decoration: none;
+}
+#product_category img{
+    height: 300px;
+}
 .is_new{
     background-color: green;
     position:absolute;
@@ -161,6 +169,47 @@ td{
     font-weight: bold;
     padding: 5px;
 }
+#carousel_promotions{
+    width: 50%;
+    padding: 10px;
+    background-color: #28a745;
+}
+#produtos{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+#indices{
+    max-width: 800px;
+}
+#user{
+    position:absolute;
+    left:0;
+    bottom:0;
+    color:white;
+    font-weight: bold;
+    font-size: 12px;
+    width: 10px;
+}
+.text-limit{
+    white-space:nowrap;
+    overflow: hidden;
+    width: 150px;
+    text-overflow: ellipsis;
+}
+.cards-accepts{
+    background-color: #28a745;
+}
+.descriptions{
+    width: 100%;
+}
+.descriptions h4{
+    word-wrap:break-word;
+}
+.card-width{
+    width: 50px;
+    font-weight: bold;
+}
 @media (max-width:963px){
     .menu-lateral{
         display: none;
@@ -185,5 +234,10 @@ td{
     }
     #product_home img{
         height: 270px;
+    }
+}
+@media (max-width:760px){
+    #carousel_promotions{
+        width: 100%;
     }
 }

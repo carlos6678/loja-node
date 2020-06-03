@@ -14,9 +14,9 @@ module.exports = {
         if(errors.length>0){
             res.render('login',{errors})
         }
-        session_id=await UsersModel.AccountExists(req.body)
-        if(session_id.length>0){
-            req.session.logado=session_id[0].id
+        session=await UsersModel.AccountExists(req.body)
+        if(session.length>0){
+            req.session.logado=session
             res.locals.user=req.session.logado
             res.redirect('/')
         }else{
@@ -37,5 +37,9 @@ module.exports = {
 
         await UsersModel.saveCredentials(req.body)
         res.redirect('/login/logar')
+    },
+    logout(req,res){
+        req.session.logado=undefined
+        res.redirect('/')   
     }
 }

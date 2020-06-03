@@ -3,7 +3,7 @@ const encrypt = require('../services/encrypt')
 
 module.exports = {
     async AccountExists({email,password}){
-        return knex('users').where({email,password:encrypt(password)}).select('id')
+        return knex('users').select('*').where({email,password:encrypt(password)})
     },
     async EmailExists({email}){
         return knex('users').where('email',email).select('id')

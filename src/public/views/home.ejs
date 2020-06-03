@@ -4,7 +4,7 @@
         <ul class="list-group">
             <li class="list-group-item bg-dark"><strong>Categorias</strong></li>
             <% Categories.forEach(category=>{ %>
-                <a style="text-decoration: none;" href="<%= category.id %>" class="list-group-item list-group-item-light"><%=category.name%></a>
+                <a style="text-decoration: none;" href="/categorias/categoria/<%=category.id %>" class="list-group-item list-group-item-light"><%=category.name%></a>
             <%})%>
         </ul>
     </div>
@@ -17,7 +17,7 @@
               </button>
             <div class="dropdown-menu bg-dark" aria-labelledby="dropCategories">
                 <% Categories.forEach(category=>{ %>
-                    <a style="text-decoration: none;color: white;font-weight: bold;" href="<%= category.id %>" class="dropdown-item bg-dark mb-1 border-bottom"><%=category.name%></a>
+                    <a style="text-decoration: none;color: white;font-weight: bold;" href="/categorias/categoria/<%=category.id %>" class="dropdown-item bg-dark mb-1 border-bottom"><%=category.name%></a>
                 <%})%>
             </div>
         </div>
@@ -49,7 +49,7 @@
                                 <img style="height:100px;width: 100px;" class="mr-3" src="<%=process.env.PATH_IMAGE+product.image_url[0].url%>" alt="testando">
                                 <div class="media-body">
                                     <p><%=product.name%></p>
-                                    <p><%=product.descricao%></p>
+                                    <p class="text-limit"><%=product.descricao%></p>
                                     <p>R$ <%=product.price%></p>
                                 </div>
                             </div>
@@ -68,7 +68,7 @@
                                 <img style="height:100px;width: 100px;" class="mr-3" src="<%=process.env.PATH_IMAGE+product.image_url[0].url%>" alt="testando">
                                 <div class="media-body">
                                     <p><%=product.name%></p>
-                                    <p><%=product.descricao%></p>
+                                    <p class="text-limit"><%=product.descricao%></p>
                                     <p>R$ <%=product.price%></p>
                                 </div>
                             </div>
@@ -79,12 +79,12 @@
         </ul>
     </div>
     <div class="col-sm-7" id="centro">
-        <ul class="nav nav-pills nav-fill fundo-bar">
+        <ul class="nav nav-pills nav-fill fundo-bar" id="indices">
             <li class="nav-item bg-success">
                 <a class="nav-link" href="#">Promoções</a>
             </li>
             <li class="nav-item bg-success">
-                <a class="nav-link" href="#">Mais Vendidos</a>
+                <a class="nav-link" href="#">Tops</a>
             </li>
             <li class="nav-item bg-success">
                 <a class="nav-link" href="#">Novos</a>
@@ -114,7 +114,7 @@
                             <div class="bestseller">Bestseller</div>
                         <%}%>
                         <h5 class="card-title"><%= product.name %></h5>
-                        <p class="card-text mb-5"><%= product.descricao %></p>
+                        <p class="card-text mb-5 text-limit"><%= product.descricao %></p>
                         <div class="d-flex justify-content-between">
                             <% if(product.old_price != null){ %>
                                 <strong class="text-secondary" style="text-decoration: line-through;">$R$ <%= product.old_price%></strong>
@@ -138,7 +138,7 @@
                             <img style="height:100px;width: 100px;" class="mr-3" src="<%=process.env.PATH_IMAGE+product.image_url[0].url%>" alt="testando">
                             <div class="media-body">
                                 <p><%=product.name%></p>
-                                <p><%=product.descricao%></p>
+                                <p class="text-limit"><%=product.descricao%></p>
                                 <p>R$ <%=product.price%></p>
                             </div>
                         </div>
@@ -154,8 +154,8 @@
                         <div class="media">
                             <img style="height:100px;width: 100px;" class="mr-3" src="<%=process.env.PATH_IMAGE+product.image_url[0].url%>" alt="testando">
                             <div class="media-body">
-                                <p><%=product.name%></p>
-                                <p><%=product.descricao%></p>
+                                <p class="text-limit"><%=product.name%></p>
+                                <p class="text-limit"><%=product.descricao%></p>
                                 <p>R$ <%=product.price%></p>
                             </div>
                         </div>

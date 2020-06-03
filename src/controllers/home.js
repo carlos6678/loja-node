@@ -12,7 +12,6 @@ module.exports = {
         const Products = await ProductsModel.Listar(page,limitPage)
         const Categories = await CategoryModel.Listar()
         
-        // res.send(Promotions)
         res.render('home',{
             Products,
             Categories,

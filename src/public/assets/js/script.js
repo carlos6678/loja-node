@@ -19,9 +19,10 @@ $(function(){
         $('#produto_origin').removeAttr('src')
         $('#produto_origin').attr('src',url)
     })
+
     $(window).scroll(function(){
         var posicao = $(this).scrollTop()
-        if(posicao>=74){
+        if(posicao>=25){
             $('#navbar-top').css('position','fixed')
             $('#navbar-top').css('z-index','99999')
             $('#navbar-top').css('width','100%')
@@ -32,5 +33,9 @@ $(function(){
             $('#navbar-top').css('width','')
             $('#navbar-top').css('top','')
         }
+    })
+
+    $('#quantity').click(function(){
+        $('#quantityProduct').val($(this).val())
     })
 })
