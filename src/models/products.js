@@ -83,11 +83,14 @@ module.exports = {
     },
     async InfoProduct(id){
         const product = await knex('products')
-        .select('name','price','descricao')
+        .select('id','name','price','descricao')
         .where('id',id)
         if(product){
             return this.the_products_images(product)
         }
         return product
+    },
+    async is_estoque(id){
+        return knex('products').select('quantity').where('id',id)
     }
 }

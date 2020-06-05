@@ -9,7 +9,7 @@ module.exports = {
     },
     async verificar(req,res){
         let errors = validationResult(req).array()
-        let session_id=null
+        let session=null
 
         if(errors.length>0){
             res.render('login',{errors})
@@ -39,6 +39,7 @@ module.exports = {
         res.redirect('/login/logar')
     },
     logout(req,res){
+        req.session.cart=undefined
         req.session.logado=undefined
         res.redirect('/')   
     }

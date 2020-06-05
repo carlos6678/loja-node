@@ -8,9 +8,10 @@ const session = require('express-session')
 const app = express()
 
 app.use(bodyParser.urlencoded({extended:false}))
-app.use(session({secret:'cat',rolling:true,cookie:{secure:false,maxAge:100000000000},saveUninitialized:true,resave:false}))
+app.use(session({secret:'cat',rolling:true,cookie:{secure:false},saveUninitialized:true,resave:false}))
 app.use(function(req, res, next){
   res.locals.user = req.session.logado;
+  res.locals.cart = req.session.cart
   next();
 });
 //Rotas

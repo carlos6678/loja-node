@@ -78,7 +78,7 @@ a{
     margin: 5px;
     cursor: pointer;
 }
-td{
+.bg-success td{
     color: white;
     font-weight: bold;
     font-size: 19px;
@@ -191,6 +191,13 @@ td{
     font-size: 12px;
     width: 10px;
 }
+#cart{
+    position:absolute;
+    color:white;
+    font-weight: bold;
+    font-size: 15px;
+    width: 10px;
+}
 .text-limit{
     white-space:nowrap;
     overflow: hidden;
@@ -209,6 +216,34 @@ td{
 .card-width{
     width: 50px;
     font-weight: bold;
+}
+.name-product-cart{
+    background-color: #28a745;
+    padding:15px
+}
+.name-product-cart h5{
+    font-weight: bold;
+    color: white;
+    font-family: Roboto;
+}
+.price-cart{
+    font-weight: bold;
+}
+#info-reponsive-cart-img{
+    width: 300px;
+}
+.actions-cart{
+    width: 100%;
+}
+.subtotal{
+    width: 80%;
+    height: 40px;
+}
+.subtotal p {
+    color:#28a745;
+    font-weight: bold;
+    font-size: 40px;
+    font-family: Roboto;
 }
 @media (max-width:963px){
     .menu-lateral{
@@ -239,5 +274,20 @@ td{
 @media (max-width:760px){
     #carousel_promotions{
         width: 100%;
+    }
+    .info-reponsive-cart{
+        flex-direction: column;
+    }
+    .info-reponsive-cart-2{
+        flex-direction: column;
+    }
+    .actions-cart{
+        display: flex;
+        flex-direction: column;
+    }
+}
+@media (max-width:375px){
+    #info-reponsive-cart-img{
+        width: 210px;
     }
 }

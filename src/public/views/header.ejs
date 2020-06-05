@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <script src="/assets/js/jquery-3.5.1.min.js"></script>
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
@@ -22,8 +23,6 @@
           </div>
           <div class="dropdown-menu">
             <% if(user){ %>
-              <a href="" class="dropdown-item">Minha conta</a>
-              <a href="" class="dropdown-item">Meu Carrinho</a>
               <a href="/login/logout" class="dropdown-item">Sair</a>
             <%}%>
             <%if(!user){%>
@@ -34,6 +33,9 @@
         </div>
         <a class="nav-link" href="/cart/mycart" tabindex="-1" aria-disabled="true">
           <ion-icon name="cart-outline" style="font-size: 35px;"></ion-icon>
+          <%if(cart){%>
+            <span id="cart"><%=cart.length%></span>
+          <%}%>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu-bar" aria-controls="menu-bar" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
