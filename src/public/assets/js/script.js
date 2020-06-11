@@ -22,7 +22,7 @@ $(function(){
 
     $(window).scroll(function(){
         var posicao = $(this).scrollTop()
-        if(posicao>=25){
+        if(posicao>=40){
             $('#navbar-top').css('position','fixed')
             $('#navbar-top').css('z-index','99999')
             $('#navbar-top').css('width','100%')

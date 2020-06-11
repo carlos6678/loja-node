@@ -45,8 +45,10 @@ router.use(passport.initialize())
 router.use(passport.session())
 
 router.get('/auth/facebook',passport.authenticate('facebook',{scope:['email']}))
-router.get('/facebook/callback',passport.authenticate('facebook',{failureRedirect: '/login'}),(req,res)=>{
-    req.session.logado=req.user
+router.get('/facebook/callback',passport.authenticate('facebook',{failureRedirect: '/login'}),async (req,res)=>{
+    const {id} = req.user
+    req.session.logado = await knex('users').select('id','name','email').where('social_id',id)
+    console.log(req.session.logado)
     res.redirect('/')
 })
 

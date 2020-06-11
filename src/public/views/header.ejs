@@ -9,6 +9,7 @@
     <script src="/assets/js/jquery-3.5.1.min.js"></script>
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+    <script src="/assets/js/jquery.mask.min.js"></script>
     <title>E-Vitual</title>
 </head>
 <body>
@@ -18,7 +19,7 @@
           <div style="color:#28a745;" type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <ion-icon name="person-circle-sharp" style="font-size: 50px;"></ion-icon>
             <%if(user){%>
-              <span id="user"><%=user.hasOwnProperty('displayName')?user.displayName:user[0].name%></span>
+              <span id="user"><%=user[0].name%></span>
             <%}%>
           </div>
           <div class="dropdown-menu">
@@ -51,5 +52,6 @@
         </div>
       </nav>
       <script src="/assets/js/script.js"></script>
+      <script src="/assets/js/calcFrete.js"></script>
 </body>
 </html>

@@ -62,7 +62,7 @@ module.exports = {
         return product
     },
     async getComments(id){
-        return knex('comments').select('user_id','body').where('product_id',id)
+        return knex('comments').select('user_id','body').where('product_id',id).orderBy('data','desc')
     },
     async getImagesProduct(id){
         return knex('product_image').select('url').where('product_id',id)
@@ -92,5 +92,42 @@ module.exports = {
     },
     async is_estoque(id){
         return knex('products').select('quantity').where('id',id)
+    },
+    async infoFreteProduct(id){
+        return knex('products')
+        .select('price','weight','width','height','lenght','diameter')
+        .where('id',id)
+    },
+    async getBranch(id){
+        const branch_id = await knex('products')
+        .select('branch_id')
+        .where('id',id)
+
+        if(branch_id){
+            const branch = await knex('branch').select().where('id',branch_id[0].branch_id)
+
+            return branch
+        }
+
+        return null
+    },
+    async getCategoryProduct(id){
+        const category_id = await knex('products')
+        .select('category_id')
+        .where('id',id)
+
+        if(category_id){
+            const category = await knex('category').select().where('id',category_id[0].category_id)
+
+            return category
+        }
+
+        return null
+    },
+    async addComment(user_id,product_id,body){
+        const temp = new Date()
+        const data = `${temp.getFullYear()}-0${temp.getMonth()+1}-0${temp.getDate()} ${temp.getHours()}:${temp.getMinutes()}:${temp.getSeconds()}`
+
+        await knex('comments').insert({user_id,product_id,body,data})
     }
 }

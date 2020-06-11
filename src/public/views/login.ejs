@@ -13,19 +13,21 @@
             <div class="card w-100">
                 <div class="card-header bg-dark">
                     <h1>Entrar</h1>
-                </div>
+                </div> 
                 <div class="card-body">
                     <form method="POST" action="/login/logar" class="form-group">
                         <label>E-mail</label>
                         <input type="text" class="form-control mb-2" name="email">
                         <label>Senha</label>
                         <input type="text" class="form-control mb-2" name="password">
-                        <input type="submit" class="btn btn-outline-success btn-lg" value="Login">
-                        <a href="/login/cadastrar" class="btn btn-lg btn-outline-success">Cadastrar</a>
-                        <a href="/login/auth/facebook" class="btn btn-lg btn-outline-primary d-flex justify-content-center mt-3">
-                            <ion-icon name="logo-facebook" style="font-size: 28px;"></ion-icon>
-                            <strong>Entrar Com Facebook</strong>
-                        </a>
+                        <div class="actions">
+                            <input type="submit" class="btn btn-outline-dark btn-lg" value="Login">
+                            <a href="/login/cadastrar" class="btn btn-lg btn-outline-dark mt-2">Cadastrar</a>
+                            <a href="/login/auth/facebook" class="btn btn-lg btn-outline-primary d-flex justify-content-center mt-2">
+                                <ion-icon name="logo-facebook" style="font-size: 28px;"></ion-icon>
+                                <strong>Entrar Com Facebook</strong>
+                            </a>
+                        </div>
                     </form>
                 </div>
             </div>

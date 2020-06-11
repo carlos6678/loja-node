@@ -1,5 +1,6 @@
 const CartModel = require('../models/cart')
 const ProductModel = require('../models/products')
+const FreteService = require('../services/frete')
 
 module.exports = {
     async homeCart(req,res){
@@ -77,5 +78,24 @@ module.exports = {
             }
         }
         res.redirect('/cart/mycart')
+    },
+    async calcFrete(req,res){
+        const { product_id:product,quantity,cep } = req.body
+        const url = await FreteService.urlFrete(product,quantity,cep)
+        if(url){
+            const parseString = require('xml2js').parseString
+            const axios = require('axios').default
+
+            axios.get(url,{headers:{'Content-Type':'text/xml'}}).then(result=>{
+                parseString(result.data,(err,resp)=>{
+                    const {Valor,PrazoEntrega} = resp.Servicos.cServico[0]
+                    res.send({
+                        Valor:Valor[0],
+                        PrazoEntrega:parseInt(PrazoEntrega[0])+2,
+                        cep
+                    })
+                })
+            }).catch(err=>{console.log(err)})
+        }
     }
 }

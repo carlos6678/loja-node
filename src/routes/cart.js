@@ -7,5 +7,6 @@ router.post('/add',is_logged,CartController.add)
 router.get('/delete/:id',is_logged,CartController.delete)
 router.get('/subtraction/:id',is_logged,CartController.subtraction)
 router.get('/addUnidade/:id',is_logged,CartController.addUnidade)
+router.post('/calcFrete',CartController.calcFrete)
 
 module.exports = router

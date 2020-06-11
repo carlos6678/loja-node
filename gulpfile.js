@@ -3,7 +3,7 @@ const { src , dest } = require('gulp')
 const uglify = require('gulp-uglify')
 const concat = require('gulp-concat')
 
-function defaultTask(){
+function compactJS(){
     return src([
         'src/public/assets/js/jquery-3.5.1.min.js',
         'src/public/assets/js/bootstrap.bundle.min.js',
@@ -14,4 +14,4 @@ function defaultTask(){
     .pipe(dest('src/public/assets/dist/js/',{sourcemaps:true}))
 }
 
-exports.default = defaultTask
+exports.default = compactJS

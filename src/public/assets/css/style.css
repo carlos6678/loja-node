@@ -1,5 +1,5 @@
 body{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Roboto;
     background-color: #E9EcEf;
 }
 a{
@@ -66,7 +66,7 @@ a{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 500px;
+    height: 700px;
     width: 500px;
 }
 .preços h2{
@@ -85,7 +85,10 @@ a{
     font-family: 'Courier New', Courier, monospace;
 }
 .comments{
-    background-color: rgba(52, 58, 64, 0.5);
+    border-width: 5px;
+    border-style: ridge;
+    border-color: #28a745 black;
+    background-color: #E9EcEf;
     padding:5px;
 }
 #produtos{
@@ -169,11 +172,6 @@ a{
     font-weight: bold;
     padding: 5px;
 }
-#carousel_promotions{
-    width: 50%;
-    padding: 10px;
-    background-color: #28a745;
-}
 #produtos{
     width: 100%;
     display: flex;
@@ -205,7 +203,7 @@ a{
     text-overflow: ellipsis;
 }
 .cards-accepts{
-    background-color: #28a745;
+    background-color: #E9EcEf;
 }
 .descriptions{
     width: 100%;
@@ -245,6 +243,26 @@ a{
     font-size: 40px;
     font-family: Roboto;
 }
+.form-comment{
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 500px;
+}
+.buttom-comment{
+    height: 60px;
+    font-size: 20px;
+}
+.frete-information{
+    visibility: hidden;
+    opacity: 0;
+    transition:all linear 2s;
+    background-color: #E9EcEf;
+}
+.frete{
+    border-width: 1px;
+    border-style: outset;
+    border-color: silver;
+}
 @media (max-width:963px){
     .menu-lateral{
         display: none;
@@ -272,9 +290,6 @@ a{
     }
 }
 @media (max-width:760px){
-    #carousel_promotions{
-        width: 100%;
-    }
     .info-reponsive-cart{
         flex-direction: column;
     }
