@@ -1,17 +1,19 @@
-const UsersModel = require('../models/users')
-const {validationResult} = require('express-validator')
-module.exports = {
-    async logar(req,res){
+import { Request,Response } from 'express'
+import UsersModel from '../models/users'
+import {validationResult} from 'express-validator'
+
+class LoginController{
+    public async logar(req:Request,res:Response):Promise<void>{
         res.render('login')
-    },
-    async cadastrar(req,res){
+    }
+    async cadastrar(req:Request,res:Response):Promise<void>{
         res.render('cadastrar')
-    },
-    async verificar(req,res){
-        let errors = validationResult(req).array()
+    }
+    async verificar(req:Request,res:Response):Promise<void>{
+        let errors:Array<object> = validationResult(req).array()
         let session=null
 
-        if(errors.length>0){
+        if(errors.length>0){    
             res.render('login',{errors})
         }
         session=await UsersModel.AccountExists(req.body)
@@ -23,9 +25,9 @@ module.exports = {
             errors.push({msg:'Conta nâo existe'})
             res.render('login',{errors})
         }
-    },
-    async salvar(req,res){
-        let errors = validationResult(req).array()
+    }
+    async salvar(req:Request,res:Response):Promise<void>{
+        let errors:Array<object> = validationResult(req).array()
 
         if(errors.length>0){
             res.render('cadastrar',{errors})
@@ -37,10 +39,12 @@ module.exports = {
 
         await UsersModel.saveCredentials(req.body)
         res.redirect('/login/logar')
-    },
-    logout(req,res){
+    }
+    logout(req:Request,res:Response):void{
         req.session.cart=undefined
         req.session.logado=undefined
         res.redirect('/')   
     }
 }
+
+export default new LoginController()

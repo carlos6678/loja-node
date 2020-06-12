@@ -1,5 +1,6 @@
-const {check} = require('express-validator')
-module.exports = [
+import {check} from 'express-validator'
+
+export default[
     check('email')
     .not().isEmpty().withMessage('Campo E-mail vazio')
     .isEmail()

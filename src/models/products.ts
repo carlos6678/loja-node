@@ -1,10 +1,10 @@
-const knex = require('../services/database')
+import knex from '../services/database'
 
-module.exports = {
-    async TotalRegister(){
+class ProductsModel{
+    public async TotalRegister(){
         return knex('products').count('id',{as:'total'})
-    },
-    async Listar(page,limitPage){
+    }
+    public async Listar(page:number,limitPage:number):Promise<object>{
         const products = await knex('products')
         .select()
         .limit(limitPage)
@@ -17,8 +17,8 @@ module.exports = {
         return products
 
         
-    },
-    async getPromotions(){
+    }
+    public async getPromotions():Promise<object>{
         const products = await knex('products')
         .select()
         .where('promotion',1)
@@ -29,8 +29,8 @@ module.exports = {
             return this.the_products_images(products)
         }
         return products
-    },
-    async getNewProducts(){
+    }
+    public async getNewProducts():Promise<object>{
         const products = await knex('products')
         .select()
         .where('is_new',1)
@@ -41,8 +41,8 @@ module.exports = {
             return this.the_products_images(products)
         }
         return products
-    },
-    async the_products_images(products){
+    }
+    public async the_products_images(products:any){
         const images_of_products = async() => {
             for(const product of products){
                 product.image_url = await this.getImagesProduct(product.id)
@@ -52,22 +52,22 @@ module.exports = {
         return await images_of_products().then((data)=>{
             return data
         })
-    },
-    async the_products_comments(product){
+    }
+    public async the_products_comments(product:object){
         product[0].comments=await this.getComments(product[0].id)
-        for(prod of product[0].comments){
+        for(let prod of product[0].comments){
             let name = await knex('users').select('name').where('id',prod.user_id)
             prod.username=name[0].name
         }
         return product
-    },
-    async getComments(id){
+    }
+    public async getComments(id:number){
         return knex('comments').select('user_id','body').where('product_id',id).orderBy('data','desc')
-    },
-    async getImagesProduct(id){
+    }
+    public async getImagesProduct(id:number){
         return knex('product_image').select('url').where('product_id',id)
-    },
-    async getProduct(id){
+    }
+    public async getProduct(id:number){
         const product = await knex('products')
         .select()
         .where('id',id)
@@ -75,13 +75,13 @@ module.exports = {
             return this.the_products_images(await this.the_products_comments(product))
         }
         return product
-    },
-    async getFeatures(id){
+    }
+    public async getFeatures(id:number){
         return knex('features')
         .select('name','value')
         .where('product_id',id)
-    },
-    async InfoProduct(id){
+    }
+    public async InfoProduct(id:number){
         const product = await knex('products')
         .select('id','name','price','descricao')
         .where('id',id)
@@ -89,16 +89,16 @@ module.exports = {
             return this.the_products_images(product)
         }
         return product
-    },
-    async is_estoque(id){
+    }
+    public async is_estoque(id:number){
         return knex('products').select('quantity').where('id',id)
-    },
-    async infoFreteProduct(id){
+    }
+    public async infoFreteProduct(id:number){
         return knex('products')
         .select('price','weight','width','height','lenght','diameter')
         .where('id',id)
-    },
-    async getBranch(id){
+    }
+    public async getBranch(id:number):Promise<null|object>{
         const branch_id = await knex('products')
         .select('branch_id')
         .where('id',id)
@@ -110,8 +110,8 @@ module.exports = {
         }
 
         return null
-    },
-    async getCategoryProduct(id){
+    }
+    public async getCategoryProduct(id:number):Promise<null|object>{
         const category_id = await knex('products')
         .select('category_id')
         .where('id',id)
@@ -123,11 +123,13 @@ module.exports = {
         }
 
         return null
-    },
-    async addComment(user_id,product_id,body){
+    }
+    public async addComment(user_id:number,product_id:number,body:string){
         const temp = new Date()
         const data = `${temp.getFullYear()}-0${temp.getMonth()+1}-0${temp.getDate()} ${temp.getHours()}:${temp.getMinutes()}:${temp.getSeconds()}`
 
         await knex('comments').insert({user_id,product_id,body,data})
     }
 }
+
+export default new ProductsModel()

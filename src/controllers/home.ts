@@ -1,12 +1,13 @@
-const ProductsModel = require('../models/products')
-const CategoryModel = require('../models/categories')
+import {Request,Response} from 'express'
+import ProductsModel from '../models/products'
+import CategoryModel from '../models/categories'
 
-module.exports = {
-    async home(req,res){
-        const limitPage = 9 //limite de paginação
-        const page = req.params.page || 1 //pagina 
+class HomeController{
+    public async home(req:Request,res:Response):Promise<void>{
+        const limitPage = 3 //limite de paginação
+        const page = parseInt(req.params.page) || 1 //pagina 
 
-        const TotalRegister = await ProductsModel.TotalRegister()
+        const TotalRegister:Array<any>= await ProductsModel.TotalRegister()
         const Promotions = await ProductsModel.getPromotions()
         const NewsProducts = await ProductsModel.getNewProducts()
         const Products = await ProductsModel.Listar(page,limitPage)
@@ -21,3 +22,5 @@ module.exports = {
         })
     }
 }
+
+export default new HomeController()

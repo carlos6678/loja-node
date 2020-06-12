@@ -1,9 +1,9 @@
 <%- include('header') %>
 <div class="container-fluid">
-    <h1 class="text-secondary mt-1">Pesquisou Por <strong><%=Category[0].name%></strong></h1>
+    <h2 class="text-secondary mt-1">Pesquisou Por <strong><%=Category[0].name%></strong></h2>
     <div class="row justify-content-center">
         <% Products.forEach((product)=>{%>
-            <a href="/products/product/<%= product.id %>" class="card ml-2 mb-2 mt-3 float-left bg-dark" id="product_category">
+            <a href="/products/product/<%= product.id %>" class="card ml-2 mb-2 float-left bg-dark" id="product_category">
                 <img src="<%= process.env.PATH_IMAGE+product.image_url[0].url%>" class="card-img-top">
                 <div class="card-body bg-dark">
                     <% if(product.is_new===1){ %>

@@ -1,5 +1,7 @@
-const {check} = require('express-validator')
-module.exports = [
+
+import {check} from 'express-validator'
+
+export default [
     check('name')
     .not().isEmpty().withMessage('Campo Nome está vazio')
     .isAlphanumeric(),

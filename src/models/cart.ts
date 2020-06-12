@@ -1,8 +1,7 @@
-const knex = require('../services/database')
-const ProductsModel = require('../models/products')
+import ProductsModel from '../models/products'
 
-module.exports = {
-    async getProducts(cart_session){
+class CartModel{
+    public async getProducts(cart_session:object[]|any){
         let products = []
         for(const item of cart_session){
             const info = await ProductsModel.InfoProduct(item.id)
@@ -17,3 +16,5 @@ module.exports = {
         return products
     }
 }
+
+export default new CartModel()

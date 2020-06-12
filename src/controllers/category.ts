@@ -1,8 +1,9 @@
-const CategoryModel = require('../models/categories')
-const ProductModel = require('../models/products')
+import { Request,Response } from 'express'
+import CategoryModel from '../models/categories'
+import ProductModel from '../models/products'
 
-module.exports={
-    async category_product(req,res){
+class CategoryController{
+    public async category_product(req:Request,res:Response):Promise<void>{
         const Products = await ProductModel.the_products_images(
             await CategoryModel.category_products(req.params.id)
         )
@@ -13,3 +14,5 @@ module.exports={
         })
     }
 }
+
+export default new CategoryController()
